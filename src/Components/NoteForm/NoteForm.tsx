@@ -11,15 +11,13 @@ export interface NoteFormProps {
   isSubmitting: boolean;
 }
 
-type NoteFormValues = CreateNotePayload;
-
 const validationSchema = Yup.object({
   title: Yup.string().min(3).max(50).required("Title is required"),
   content: Yup.string().max(500),
   tag: Yup.mixed<NoteTag>().oneOf(noteTags).required("Tag is required"),
 });
 
-const initialValues: NoteFormValues = {
+const initialValues: CreateNotePayload = {
   title: "",
   content: "",
   tag: "Todo",
